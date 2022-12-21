@@ -22,15 +22,18 @@ mongoose
     console.log("server started");
 })
 app.post("/post",async(req,res)=>{
-     const {data}= req.body;
+     const {email,password}= req.body;
     try{
-     if(data=='harshit')
-     {
-            res.send({status:"ok"})
-     }
-     else{
-        res.send({data:"invalid"})
-     }
+        let exitingEmail=await findOne({email}) || ""
+ 
+
+        if(exitingEmail.email==email)
+        {
+           res.send("Email or User Name Already Exist")
+        }
+   
+         let user=await create({...req.body}) 
+         res.send(user)
     }
     catch(error){
         res.send({status:"none"});
