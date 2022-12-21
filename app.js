@@ -1,6 +1,11 @@
 const express=require('express');
 const app=express();
 app.use(express.json());
+let cors = require("cors");
+app.use(cors());
+
+
+
 const mongoose=require('mongoose');
 const mongoUrl="mongodb+srv://Test0:Test0@cluster0.a4uxvuo.mongodb.net/?retryWrites=true&w=majority"
 mongoose
